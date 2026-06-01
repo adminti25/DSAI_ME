@@ -1,0 +1,15 @@
+hsaicorporate-landing/
+├── index.html
+├── README.md
+├── LICENSE
+├── .gitignore
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── main.js
+│   └── img/
+│       ├── favicon.ico
+│       └── og-image.jpg
+└── docs/
+    └── MEMBRESIA_EMPRESARIAL_HSAI.pdf

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  
+  <title>Membresía Empresarial HSAI Chapultepec | DSAI Grupo Hospitalario Dalinde San Ángel Inn</title>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOP LOGO BANNER -->
+<div class="top-logo-banner">
+  <img src="logodsai.jpg" alt="DSA Logo" class="top-logo">
+</div>
+
+<main class="main-content">
+  <div class="scene-container">
+    <div class="scene">
+      <div class="card" id="card">
+        <div class="card-inner">
+          
+          <!-- FRONT -->
+          <div class="card-front" id="cardFront">
+            <div class="logo-header">
+              <img src="logodsai.jpg" alt="DSA" class="dsa-logo">
+            </div>
+            
+            <div class="card-header">
+              <h1 class="card-title">Membresía<br>Empresarial</h1>
+            </div>
+            
+            <div class="form-section-card">
+              <div class="field full">
+                <label>Nombre de la Empresa</label>
+                <input type="text" class="input-glass" id="empresa" placeholder="Escribe el nombre de la empresa" required>
+              </div>
+              
+              <div class="fields-row">
+                <div class="field">
+                  <label>Nombre de empleado</label>
+                  <input type="text" class="input-glass" id="empleado" placeholder="Nombre completo" required>
+                </div>
+                <div class="field">
+                  <label>Número de Teléfono</label>
+                  <input type="tel" class="input-glass" id="telefono" placeholder="##########" required>
+                </div>
+              </div>
+              
+              <div class="field full">
+                <label>Correo corporativo</label>
+                <input type="email" class="input-glass" id="correo" placeholder="correo@empresa.com" required>
+              </div>
+              
+              <div class="accept-terms">
+                <input type="checkbox" id="acceptTerms">
+                <label for="acceptTerms">
+                  Acepto <a href="#" id="openTerms">términos y condiciones</a> y <a href="#" id="openPrivacy">aviso de privacidad</a>
+                </label>
+              </div>
+              
+              <button id="btnContinuar" class="btn-continuar" disabled>Continuar</button>
+              
+              <button id="btnDescargarPDF" class="btn-descargar" disabled>
+                <i class="fas fa-download"></i> Descargar Tarjeta como PDF
+              </button>
+              
+              <div class="qr-container">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://dalinde.com/membresia/novatech" 
+                     alt="QR" class="qr-code">
+                <div class="qr-label">Escanea para más información</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- BACK -->
+          <div class="card-back" id="cardBack">
+            <div class="back-content">
+              <h2 class="back-title">Beneficios</h2>
+              <table class="benefits-table">
+                <thead><tr><th>Concepto</th><th>Beneficio</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Consultas Externas</strong></td><td></td></tr>
+                  <tr><td>1 Consulta de medicina general sin costo (Semestral)</td><td class="check">✓</td></tr>
+                  <tr><td>Consultas de ginecología Precio Preferencial</td><td>$ 423.13</td></tr>
+                  <tr><td>Consultas de pediatría Precio Preferencial</td><td>$ 423.13</td></tr>
+                  <tr class="section-title"><td colspan="2"><strong>Estudios Externos</strong></td></tr>
+                  <tr><td>Estudios de laboratorio (no incluye patología)</td><td>30%</td></tr>
+                  <tr><td>Estudios de Rayos X</td><td>30%</td></tr>
+                  <tr><td>Ultrasonido</td><td>30%</td></tr>
+                  <tr><td>Tomografía sin contraste</td><td>60%</td></tr>
+                  <tr><td>Resonancia Magnética sin contraste</td><td>60%</td></tr>
+                  <tr class="section-title"><td colspan="2"><strong>Hospitalización</strong></td></tr>
+                  <tr><td>Descuento en Hospitalización</td><td>20%</td></tr>
+                  <tr><td>Descuento en Urgencias</td><td>20%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="back-footer">
+              <div class="brand">
+                Membresía Empresarial HSAI Chapultepec<br>
+                DSA Grupo Hospitalario Dalinde • San Ángel Inn
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button id="flip-arrow" class="flip-arrow">→</button>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-text">
+      <h3>Hospital San Ángel Inn Chapultepec</h3>
+      <p>Avenida Chapultepec #489, CDMX</p>
+      <p><i class="fas fa-phone-alt"></i> 55 7731 1883</p>
+      <p class="footer-quote">Valor agregado para sus colaboradores. La membresía fortalece el bienestar y la tranquilidad del personal y sus familias.</p>
+      <p class="copyright">© 2026 DSA® Grupo Hospitalario Dalinde | San Ángel Inn</p>
+      <p class="footer-links">
+        <a href="#" id="footerPrivacy">Aviso de Privacidad</a> | 
+        <a href="#" id="footerTerms">Términos y Condiciones</a>
+      </p>
+      <p class="footer-note">No aplica con otras promociones y descuentos, para pacientes particulares.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div id="modal-body" class="modal-body-content"></div>
+    <button id="btnAceptar" class="btn-aceptar">Aceptar</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

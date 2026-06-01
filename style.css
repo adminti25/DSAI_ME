@@ -1,0 +1,611 @@
+/* ============================================
+   MEMBRESÍA EMPRESARIAL HSAI CHAPULTEPEC
+   DSA Grupo Hospitalario Dalinde | San Ángel Inn
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-navy: #748da7;
+  --primary-navy-light: #123b5e;
+  --accent-gold: #004a8d;
+  --accent-gold-dark: #3071d3;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --success: #16a34a;
+  --success-light: #4ade80;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+  background-color: var(--gray-50);
+  color: var(--gray-800);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== TOP LOGO BANNER ===== */
+.top-logo-banner {
+  width: 100%;
+  background: #004a8d;
+  border-bottom: 4px solid #004a8d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+  margin-bottom: 0;
+  border-radius: 0 0 18px 18px;
+}
+
+.top-logo {
+  max-width: 580px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ==================== CENTRADO DE LA TARJETA ==================== */
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: var(--gray-50);
+}
+
+.scene-container {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.scene {
+  perspective: 1200px;
+  width: 100%;
+}
+
+/* ===== TARJETA MÁS LARGA ===== */
+.card {
+  width: 100%;
+  height: 760px;        /* ← Tarjeta más larga */
+  position: relative;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* FRONT */
+.card-front {
+  background: #ffffff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-header {
+  text-align: center;
+  background: #003366;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.dsa-logo {
+  max-width: 200px;
+}
+
+.card-title {
+  text-align: center;
+  color: #003a8e;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Campos */
+.form-section-card {
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+.field label {
+  font-size: 0.85rem;
+  color: #000000;
+}
+
+.input-glass {
+  color: #000000 !important;
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.fields-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* CASILLA DE TÉRMINOS */
+.accept-terms {
+  margin: 8px 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+}
+
+.accept-terms input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #004a8d;
+  cursor: pointer;
+}
+
+.accept-terms a {
+  color: #0066cc;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* QR */
+.qr-container {
+  text-align: center;
+  margin-top: auto;
+}
+
+.qr-code {
+  width: 110px;
+}
+
+.qr-label {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* BACK */
+.card-back {
+  background: #f8fafc;
+  transform: rotateY(180deg);
+  padding: 30px;
+}
+
+.back-title {
+  text-align: center;
+  color: #003a8e;
+  margin-bottom: 20px;
+}
+
+.benefit {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.icon {
+  font-size: 22px;
+}
+
+/* BOTÓN FLIP */
+.flip-arrow {
+  position: absolute;
+  top: 50%;
+  right: -70px;
+  transform: translateY(-50%);
+  background: #003a8e;
+  color: white;
+  border: none;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 26px;
+  z-index: 10;
+}
+
+/* ==================== FOOTER CENTRADO ==================== */
+.footer {
+  background: #003366;
+  color: white;
+  padding: 50px 20px 40px;
+  margin-top: auto;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-text h3 {
+  margin-bottom: 12px;
+  font-size: 1.45rem;
+}
+
+.footer-text p {
+  margin: 8px 0;
+  font-size: 1.05rem;
+}
+
+.footer-quote {
+  font-style: italic;
+  margin: 25px 0;
+  opacity: 0.95;
+}
+
+.copyright {
+  margin: 20px 0 10px 0;
+  font-weight: 600;
+}
+
+.footer-links {
+  margin: 12px 0;
+}
+
+.footer-links a {
+  color: #4a9eff;
+  text-decoration: none;
+}
+
+.footer-note {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-top: 15px;
+}
+
+/* ==================== MODAL POPUP ==================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.75);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  width: 90%;
+  max-width: 820px;
+  border-radius: 12px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.close-modal {
+  color: #aaa;
+  float: right;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .flip-arrow {
+    right: -60px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 700px;     /* Altura ajustada para móviles */
+  }
+  .main-content {
+    padding: 25px 15px;
+  }
+  .footer {
+    padding: 40px 15px 30px;
+  }
+}
+/* TABLA PROFESIONAL EN EL REVERSO */
+.benefits-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+  margin-top: 10px;
+}
+
+.benefits-table th {
+  background: #003a8e;
+  color: white;
+  padding: 12px 10px;
+  text-align: left;
+}
+
+.benefits-table td {
+  padding: 10px 10px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.benefits-table tr:last-child td {
+  border-bottom: none;
+}
+
+.separator td {
+  background: #e6f0ff;
+  font-weight: bold;
+  padding: 12px 10px;
+  color: #003a8e;
+}
+
+/* Ajustes del back */
+.back-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 80px);
+}
+
+.back-title {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #003a8e;
+}
+/* ... (mantén todo el CSS anterior hasta la parte del back) */
+
+/* BACK - TABLA ESTILO IMAGEN */
+.back-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 25px 22px 20px;
+}
+
+.back-title {
+  text-align: center;
+  color: #003a8e;
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+}
+
+.benefits-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.89rem;
+  line-height: 1.3;
+}
+
+.benefits-table th {
+  background: #003a8e;
+  color: white;
+  padding: 10px 8px;
+  text-align: left;
+}
+
+.benefits-table td {
+  padding: 7px 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.check {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.section-title td {
+  background: #e6f0ff;
+  font-weight: bold;
+  padding: 10px 8px;
+  color: #003a8e;
+  border-bottom: 2px solid #003a8e;
+}
+
+/* Footer de la tarjeta */
+.back-footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #003a8e;
+}
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.input-glass {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #f1f5f9;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.input-glass:focus {
+  background: #e6f0ff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 74, 141, 0.2);
+}
+/* BOTÓN CONTINUAR */
+.btn-continuar {
+  width: 100%;
+  padding: 14px;
+  margin: 15px 0 10px 0;
+  background: #003a8e;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+.btn-continuar.enabled {
+  background: #16a34a;
+  cursor: pointer;
+  opacity: 1;
+}
+
+/* POPUP MEJORADO */
+.modal-body-content {
+  min-height: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.btn-aceptar {
+  width: 100%;
+  padding: 14px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* BOTÓN DESCARGAR PDF */
+.btn-descargar {
+  width: 100%;
+  padding: 13px;
+  margin: 10px 0 15px 0;
+  background: #003a8e;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-descargar:hover {
+  background: #004a8d;
+  transform: translateY(-2px);
+}
+
+/* ==================== IMPRESIÓN EN FORMATO A4 - FONDO AZUL FORZADO ==================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .card-front, .card-front *,
+  .card-back, .card-back * {
+    visibility: visible;
+  }
+
+  /* Forzar impresión de colores de fondo */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .main-content {
+    padding: 0 !important;
+  }
+
+  /* ====================== PARTE FRONTAL ====================== */
+  .card-front {
+    position: absolute;
+    top: 15mm;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3) !important;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  /* RECUADRO AZUL SUPERIOR - FORZADO */
+  .logo-header {
+    background: #003366 !important;
+    padding: 20px !important;
+    text-align: center !important;
+  }
+
+  .dsa-logo {
+    max-width: 220px !important;
+    height: auto !important;
+  }
+
+  /* ====================== PARTE TRASERA ====================== */
+  .card-back {
+    position: absolute;
+    top: 280mm;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3) !important;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #ffffff !important;
+  }
+
+  /* Ocultar elementos innecesarios */
+  .top-logo-banner, .footer, .flip-arrow, .btn-continuar, 
+  .btn-descargar, .accept-terms, .qr-container {
+    display: none !important;
+  }
+}
