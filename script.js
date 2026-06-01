@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const acceptCheckbox = document.getElementById("acceptTerms");
   const btnContinuar = document.getElementById("btnContinuar");
   const btnDescargarPDF = document.getElementById("btnDescargarPDF");
+  const modal = document.getElementById("termsModal");
+  const modalBody = document.getElementById("modal-body");
+  const btnAceptar = document.getElementById("btnAceptar");
+  const closeModal = document.querySelector(".close-modal");
 
   // Flip solo con flecha
   if (flipArrow) {
@@ -13,50 +17,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Checkbox → habilita Continuar
+  // Checkbox
   acceptCheckbox.addEventListener("change", () => {
-    btnContinuar.disabled = !acceptCheckbox.checked;
-    btnContinuar.classList.toggle("enabled", acceptCheckbox.checked);
+    if (acceptCheckbox.checked) {
+      btnContinuar.classList.add("enabled");
+      btnContinuar.disabled = false;
+    } else {
+      btnContinuar.classList.remove("enabled");
+      btnContinuar.disabled = true;
+    }
   });
 
-  // Continuar → habilita Descargar PDF
+  // Continuar
   btnContinuar.addEventListener("click", () => {
     btnDescargarPDF.disabled = false;
     btnDescargarPDF.classList.add("enabled");
   });
 
-  // ==================== DESCARGAR PDF CORREGIDO ====================
-  btnDescargarPDF.addEventListener("click", () => {
-    const empleado = document.getElementById("empleado").value.trim() || "Empleado";
-
-    // Cambiar título temporalmente
-    const originalTitle = document.title;
-    document.title = `Membresía Empresarial - ${empleado}`;
-
-    // Preparar la vista para impresión
-    const front = document.querySelector('.card-front');
-    const back = document.querySelector('.card-back');
-
-    // Forzar visibilidad y estilos
-    front.style.visibility = "visible";
-    back.style.visibility = "visible";
-
-    // Ocultar elementos no deseados
-    document.querySelectorAll('.flip-arrow, .footer, #btnContinuar, #btnDescargarPDF, .accept-terms, .qr-container').forEach(el => {
-      el.style.display = 'none';
+  // Modal
+  document.querySelectorAll("#openTerms, #openPrivacy, #footerTerms, #footerPrivacy").forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      modalBody.innerHTML = '<iframe src="aviso.html" width="100%" height="500px" style="border:none;"></iframe>';
+      modal.style.display = "block";
     });
+  });
 
-    // Ejecutar impresión
-    setTimeout(() => {
-      window.print();
-    }, 300);
+  btnAceptar.addEventListener("click", () => {
+    modal.style.display = "none";
+    acceptCheckbox.checked = true;
+    btnContinuar.classList.add("enabled");
+    btnContinuar.disabled = false;
+  });
 
-    // Restaurar después de imprimir
-    setTimeout(() => {
-      document.title = originalTitle;
-      document.querySelectorAll('.flip-arrow, .footer, #btnContinuar, #btnDescargarPDF, .accept-terms, .qr-container').forEach(el => {
-        el.style.display = '';
-      });
-    }, 1500);
+  closeModal.addEventListener("click", () => modal.style.display = "none");
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+
+  // Descargar PDF
+  btnDescargarPDF.addEventListener("click", () => {
+    window.print();
   });
 });
