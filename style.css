@@ -81,11 +81,21 @@ body {
 /* ===== TARJETA MÁS LARGA ===== */
 .card {
   width: 100%;
-  height: 760px;        /* ← Tarjeta más larga */
+  height: 810px;        /* ← Tarjeta más larga */
   position: relative;
   cursor: pointer;
 }
-
+/* CARD TITLE - CENTRADO Y COLOR AZUL FUERTE */
+.card-title {
+  text-align: center;
+  color: #003a8e;           /* Azul fuerte original */
+  font-size: 1.95rem;       /* Un poco más grande y visible */
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 .card-inner {
   position: relative;
   width: 100%;
@@ -118,23 +128,26 @@ body {
   flex-direction: column;
 }
 
+/* FRONT LOGO INTERNO DE LA TARJETA - MODIFICADO */
 .logo-header {
   text-align: center;
-  background: #003366;
-  padding: 15px;
+  background: #ffffff;           /* Color azul oscuro que pediste */
+  padding: 18px;
   border-radius: 12px;
   margin-bottom: 20px;
+  height: 110px;                 /* Más alto para que quepa mejor la imagen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dsa-logo {
-  max-width: 200px;
-}
-
-.card-title {
-  text-align: center;
-  color: #003a8e;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
+  max-width: 280px;              /* Más grande como pediste */
+  max-height: 78px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Campos */
