@@ -621,32 +621,39 @@ body {
   .btn-descargar, .accept-terms, .qr-container {
     display: none !important;
   }
-   /* ==================== SCROLL INTERNO EN MÓVILES ==================== */
+/* ==================== SCROLL SIEMPRE ACTIVO EN MÓVILES ==================== */
 
 @media (max-width: 480px) {
   
   .card {
-    height: 680px !important;     /* Altura fija para móviles */
-    overflow: hidden;             /* Evita scroll en toda la página */
+    height: 680px !important;
+    overflow: hidden;
   }
 
   .card-front {
     height: 100% !important;
-    overflow-y: auto !important;   /* Scroll solo dentro de la tarjeta */
-    padding-bottom: 80px !important; /* Espacio extra para botones */
+    overflow-y: scroll !important;     /* Scroll siempre activo */
+    -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+    padding-bottom: 100px !important;  /* Espacio extra abajo */
   }
 
-  .form-section-card {
-    padding-bottom: 20px;
-  }
-
-  /* Asegurar que los botones se vean al final */
+  /* Asegurar que los botones queden visibles */
   .btn-continuar, 
   .btn-descargar {
-    position: sticky;
-    bottom: 10px;
-    z-index: 10;
-    margin-top: 15px;
+    margin: 15px 0 20px 0;
+  }
+
+  /* Mejorar experiencia de scroll */
+  .form-section-card {
+    padding-bottom: 30px;
   }
 }
+
+/* Para tablets también */
+@media (max-width: 768px) and (min-width: 481px) {
+  .card-front {
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 80px;
+  }
 }
