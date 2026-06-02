@@ -621,4 +621,32 @@ body {
   .btn-descargar, .accept-terms, .qr-container {
     display: none !important;
   }
+   /* ==================== SCROLL INTERNO EN MÓVILES ==================== */
+
+@media (max-width: 480px) {
+  
+  .card {
+    height: 680px !important;     /* Altura fija para móviles */
+    overflow: hidden;             /* Evita scroll en toda la página */
+  }
+
+  .card-front {
+    height: 100% !important;
+    overflow-y: auto !important;   /* Scroll solo dentro de la tarjeta */
+    padding-bottom: 80px !important; /* Espacio extra para botones */
+  }
+
+  .form-section-card {
+    padding-bottom: 20px;
+  }
+
+  /* Asegurar que los botones se vean al final */
+  .btn-continuar, 
+  .btn-descargar {
+    position: sticky;
+    bottom: 10px;
+    z-index: 10;
+    margin-top: 15px;
+  }
+}
 }
