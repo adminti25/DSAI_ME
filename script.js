@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnAceptar = document.getElementById("btnAceptar");
   const closeModal = document.querySelector(".close-modal");
 
-  // Flip solo con flecha
+  // ==================== FLIP DE LA TARJETA ====================
   if (flipArrow) {
     flipArrow.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Checkbox
+  // ==================== CHECKBOX TÉRMINOS ====================
   acceptCheckbox.addEventListener("change", () => {
     if (acceptCheckbox.checked) {
       btnContinuar.classList.add("enabled");
@@ -28,13 +28,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Continuar
-  btnContinuar.addEventListener("click", () => {
-    btnDescargarPDF.disabled = false;
-    btnDescargarPDF.classList.add("enabled");
+  // ==================== CONTINUAR + ENVIAR A FASTAPI ====================
+  btnContinuar.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    const datosMembresia = {
+      empresa: document.getElementById("empresa").value.trim(),
+      empleado: document.getElementById("empleado").value.trim(),
+      telefono: document.getElementById("telefono").value.trim(),
+      correo: document.getElementById("correo").value.trim()
+    };
+
+    // ←←← CAMBIA ESTA URL CUANDO TENGAS TU NGROK ACTIVO ←←←
+    const urlBackend = "https://frown-uneven-uptake.ngrok-free.dev/membresia/registro";
+
+    try {
+      const respuesta = await fetch(urlBackend, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(datosMembresia)
+      });
+
+      const resultado = await respuesta.json();
+
+      if (respuesta.ok) {
+        console.log("Registro exitoso:", resultado);
+        btnDescargarPDF.disabled = false;
+        btnDescargarPDF.classList.add("enabled");
+        alert("¡Registro guardado correctamente en la base de datos!\n\nYa puedes descargar tu tarjeta.");
+      } else {
+        console.error("Error del servidor:", resultado);
+        alert("Error: " + (resultado.detail || "No se pudo registrar el usuario."));
+      }
+    } catch (error) {
+      console.error("Error de conexión:", error);
+      alert("Error de conexión con el servidor.\nVerifica que Ngrok esté activo.");
+    }
   });
 
-  // Modal
+  // ==================== MODAL (AVISO.HTML) ====================
   document.querySelectorAll("#openTerms, #openPrivacy, #footerTerms, #footerPrivacy").forEach(link => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
@@ -55,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === modal) modal.style.display = "none";
   });
 
-  // Descargar PDF
+  // ==================== DESCARGAR PDF ====================
   btnDescargarPDF.addEventListener("click", () => {
     window.print();
   });
