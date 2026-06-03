@@ -4,9 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const acceptCheckbox = document.getElementById("acceptTerms");
   const btnContinuar = document.getElementById("btnContinuar");
   const btnDescargarPDF = document.getElementById("btnDescargarPDF");
+  
+  // Modal elements
   const modal = document.getElementById("termsModal");
   const modalBody = document.getElementById("modal-body");
-  const btnAceptar = document.getElementById("btnAceptar");
+  const modalDownloadContainer = document.getElementById("modal-download-container");
+  const btnDescargarDesdeModal = document.getElementById("btnDescargarDesdeModal");
   const closeModal = document.querySelector(".close-modal");
 
   // ==================== FLIP DE LA TARJETA ====================
@@ -39,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
       correo: document.getElementById("correo").value.trim()
     };
 
-    // ←←← CAMBIA ESTA URL CUANDO TENGAS TU NGROK ACTIVO ←←←
     const urlBackend = "https://frown-uneven-uptake.ngrok-free.dev/membresia/registro";
 
     try {
@@ -69,29 +71,67 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ==================== MODAL (AVISO.HTML) ====================
+  // ==================== MODAL (TÉRMINOS + TARJETA EMPRESARIAL) ====================
+
+  // Abrir Aviso de Privacidad o Términos
   document.querySelectorAll("#openTerms, #openPrivacy, #footerTerms, #footerPrivacy").forEach(link => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      modalBody.innerHTML = '<iframe src="aviso.html" width="100%" height="500px" style="border:none;"></iframe>';
+      modalBody.innerHTML = '<iframe src="aviso.html" width="100%" height="520px" style="border:none;"></iframe>';
+      modalDownloadContainer.style.display = "none";
       modal.style.display = "block";
     });
   });
 
-  btnAceptar.addEventListener("click", () => {
+  // NUEVO: Abrir Tarjeta Empresarial en Popup
+  const btnVerTarjeta = document.getElementById("btnVerTarjeta");
+  if (btnVerTarjeta) {
+    btnVerTarjeta.addEventListener("click", () => {
+      const empresa = document.getElementById("empresa").value.trim() || "Nombre de la Empresa";
+      const empleado = document.getElementById("empleado").value.trim() || "Nombre del Empleado";
+
+      modalBody.innerHTML = `
+        <iframe id="tarjetaFrame" 
+                src="tme.html?empresa=${encodeURIComponent(empresa)}&empleado=${encodeURIComponent(empleado)}" 
+                width="100%" 
+                height="580px" 
+                style="border:none; border-radius: 12px;">
+        </iframe>
+      `;
+
+      modalDownloadContainer.style.display = "block";
+      modal.style.display = "block";
+    });
+  }
+
+  // Descargar PDF desde el modal
+  btnDescargarDesdeModal.addEventListener("click", () => {
+    const iframe = document.getElementById("tarjetaFrame");
+    if (iframe && iframe.contentWindow) {
+      iframe.contentWindow.print();
+    } else {
+      alert("La tarjeta aún no está cargada completamente.");
+    }
+  });
+
+  // Cerrar modal
+  closeModal.addEventListener("click", () => {
     modal.style.display = "none";
-    acceptCheckbox.checked = true;
-    btnContinuar.classList.add("enabled");
-    btnContinuar.disabled = false;
   });
 
-  closeModal.addEventListener("click", () => modal.style.display = "none");
   window.addEventListener("click", (e) => {
-    if (e.target === modal) modal.style.display = "none";
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
   });
 
-  // ==================== DESCARGAR PDF ====================
+  // ==================== BOTÓN DESCARGAR PDF ORIGINAL (opcional) ====================
   btnDescargarPDF.addEventListener("click", () => {
-    window.print();
+    // Opción 1: Imprimir directamente (comportamiento anterior)
+    // window.print();
+
+    // Opción 2: Abrir en popup (recomendado)
+    const btnVerTarjeta = document.getElementById("btnVerTarjeta");
+    if (btnVerTarjeta) btnVerTarjeta.click();
   });
 });
