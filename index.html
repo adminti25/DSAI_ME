@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  
   <title>Membresía Empresarial HSAI Chapultepec | DSAI Grupo Hospitalario Dalinde San Ángel Inn</title>
   
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- TOP LOGO BANNER -->
 <div class="top-logo-banner">
   <img src="logodsai.jpg" alt="DSA Logo" class="top-logo">
 </div>
@@ -64,13 +60,10 @@
               </div>
               
               <button id="btnContinuar" class="btn-continuar" disabled>Continuar</button>
-                <!-- BOTÓN PARA VER TARJETA EN POPUP -->
-                <button id="btnVerTarjeta" class="btn-descargar" style="margin-top: 8px; background: #003a8e;">
-                 <i class="fas fa-eye"></i> Ver Tarjeta Empresarial
-                </button>
               
-              <button id="btnDescargarPDF" class="btn-descargar" disabled>
-                <i class="fas fa-download"></i> Descargar Tarjeta como PDF
+              <!-- Botón principal para ver la tarjeta -->
+              <button id="btnVerTarjeta" class="btn-descargar" style="margin-top: 12px; background: #003a8e;">
+                <i class="fas fa-eye"></i> Ver Tarjeta Empresarial
               </button>
             </div>
           </div>
@@ -98,13 +91,6 @@
                 </tbody>
               </table>
             </div>
-            
-            <div class="back-footer">
-              <div class="brand">
-                <br>
-                
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -114,7 +100,6 @@
   </div>
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-text">
@@ -122,27 +107,20 @@
       <h3>Hospital San Ángel Inn Chapultepec</h3>
       <p>Avenida Chapultepec #489, CDMX</p>
       <p><i class="fas fa-phone-alt"></i> 55 7731 1883</p>
-      <p class="footer-quote">Valor agregado para sus colaboradores. La membresía fortalece el bienestar y la tranquilidad del personal y sus familias.</p>
       <p class="copyright">© 2026 DSAI® Grupo Hospitalario Dalinde | San Ángel Inn</p>
-      <p class="footer-links">
-        <a href="#" id="footerPrivacy">Aviso de Privacidad</a> | 
-        <a href="#" id="footerTerms">Términos y Condiciones</a>
-      </p>
-      <p class="footer-note">No aplica con otras promociones y descuentos, para pacientes particulares.</p>
     </div>
   </div>
 </footer>
 
-<!-- MODAL MEJORADO -->
+<!-- MODAL -->
 <div id="termsModal" class="modal">
   <div class="modal-content">
     <span class="close-modal">&times;</span>
     <div id="modal-body" class="modal-body-content"></div>
     
-    <!-- Botón de descargar que aparecerá solo en la tarjeta -->
     <div id="modal-download-container" style="display: none; margin-top: 15px;">
       <button id="btnDescargarDesdeModal" class="btn-aceptar">
-        <i class="fas fa-download"></i> Descargar como PDF
+        <i class="fas fa-download"></i> Descargar como JPG
       </button>
     </div>
   </div>

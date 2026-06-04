@@ -104,15 +104,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Descargar PDF desde el modal
+  // Descargar como JPG desde el modal
   btnDescargarDesdeModal.addEventListener("click", () => {
-    const iframe = document.getElementById("tarjetaFrame");
-    if (iframe && iframe.contentWindow) {
-      iframe.contentWindow.print();
-    } else {
-      alert("La tarjeta aún no está cargada completamente.");
-    }
-  });
+  const iframe = document.getElementById("tarjetaFrame");
+  if (iframe && iframe.contentWindow && typeof iframe.contentWindow.descargarComoJPG === "function") {
+    iframe.contentWindow.descargarComoJPG();
+  } else {
+    alert("La tarjeta aún se está cargando. Inténtalo de nuevo en unos segundos.");
+  }
+});
 
   // Cerrar modal
   closeModal.addEventListener("click", () => {
