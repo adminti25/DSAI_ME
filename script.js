@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const flipArrow = document.getElementById("flip-arrow");
   const acceptCheckbox = document.getElementById("acceptTerms");
   const btnContinuar = document.getElementById("btnContinuar");
-  const btnDescargarPDF = document.getElementById("btnDescargarPDF");
   
   // Modal elements
   const modal = document.getElementById("termsModal");
