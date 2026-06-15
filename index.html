@@ -26,27 +26,17 @@
               <h1 class="card-title">Membresía<br>Empresarial</h1>
             </div>
             
-
-            
             <div class="form-section-card">
               <div class="field full">
                 <label>Nombre de la Empresa</label>
                 <input type="text" 
-                      class="input-glass" 
-                      id="empresa" 
-                      list="empresasList"
-                      placeholder="Escribe o selecciona la empresa" 
-                      required>
+                       class="input-glass" 
+                       id="empresa" 
+                       list="empresasList"
+                       placeholder="Escribe o selecciona la empresa" 
+                       autocomplete="on"
+                       required>
               </div>
-
-              <!-- DATALIST PARA AUTOCOMPLETADO -->
-              <datalist id="empresasList">
-                <option value="Seguros Monterrey / GMM"></option>
-                <option value="Universidad Londres"></option>
-                <option value="Alsea"></option>
-                <option value="Health Conection  / Mabe"></option>
-                <option value="Health Conection / Garrido Licona y Asociados S. C."></option>
-              </datalist>
               
               <div class="fields-row">
                 <div class="field">
@@ -73,7 +63,6 @@
               
               <button id="btnContinuar" class="btn-continuar" disabled>Continuar</button>
               
-              <!-- Botón principal para ver la tarjeta -->
               <button id="btnVerTarjeta" class="btn-descargar" style="margin-top: 12px; background: #003a8e;">
                 <i class="fas fa-eye"></i> Ver Tarjeta Empresarial
               </button>
@@ -137,6 +126,15 @@
     </div>
   </div>
 </div>
+
+<!-- DATALIST AUTOCOMPLETADO -->
+<datalist id="empresasList">
+  <option value="Seguros Monterrey / GMM"></option>
+  <option value="Universidad Londres"></option>
+  <option value="Alsea"></option>
+  <option value="Health Conection / Mabe"></option>
+  <option value="Health Conection / Garrido Licona y Asociados S. C."></option>
+</datalist>
 
 <script src="script.js"></script>
 </body>
