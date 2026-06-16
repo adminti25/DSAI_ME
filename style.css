@@ -37,7 +37,7 @@ body {
   flex-direction: column;
 }
 
-/* ===== TOP LOGO BANNER ===== */
+/* ===== TOP LOGO BANNER - CON RECUADRO BLANCO ===== */
 .top-logo-banner {
   width: 100%;
   background: #004a8d;
@@ -46,17 +46,21 @@ body {
   justify-content: center;
   align-items: center;
   padding: 40px 24px;
-  margin-bottom: 0;
   border-radius: 0 0 18px 18px;
+  position: relative;
 }
 
 .top-logo {
-  max-width: 580px;
+  max-width: 680px;
   width: 100%;
   height: auto;
   object-fit: contain;
+  background: white;           /* Fondo blanco detrás del logo */
+  padding: 20px;               /* Espacio interno */
+  border-radius: 12px;         /* Bordes redondeados */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);  /* Sombra para resaltar */
+  border: 3px solid #f1f5f9;   /* Borde sutil */
 }
-
 /* ==================== CENTRADO DE LA TARJETA ==================== */
 .main-content {
   flex: 1;
