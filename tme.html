@@ -43,22 +43,29 @@
     .header h1 { margin: 0; font-size: 1.35rem; font-weight: 700; letter-spacing: 1px; }
     .header h2 { margin: 6px 0 0; font-size: 1.1rem; font-weight: 400; }
 
-    .content { padding: 5px 25px 190px; color: #003087; flex-grow: 1; }
+    .content { 
+      padding: 5px 25px 130px;     /* Reducido solo para la frontal */
+      color: #003087; 
+      text-align: center;
+    }
+
     .label { font-size: 0.9rem; color: #555; margin-bottom: 4px; }
     .value { font-size: 1.28rem; font-weight: 700; margin-bottom: 18px; line-height: 1.3; }
     .separator { border-top: 1px dashed #ccc; margin: 35px 0; }
 
     .info-box {
       display: flex;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       gap: 12px;
       font-size: 0.95rem;
       line-height: 1.45;
       margin-top: 40px;
+      text-align: center;
     }
 
     .info-text {
-      margin-top: 65px;
+      margin-top: 35px;   /* Reducido */
     }
 
     .info-icon {
@@ -79,13 +86,9 @@
       color: white;
       padding: 18px 25px;
       font-size: 0.9rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      text-align: center;
+      line-height: 1.4;
     }
-
-    .footer-left { line-height: 1.4; }
-    .footer-right img { height: 48px; width: auto; }
 
     .benefits-content {
       padding: 25px 25px 20px;
@@ -132,13 +135,17 @@
         <div class="info-icon">!</div>
         <div class="info-text">
           Los beneficios de esta membresía son válidos<br>
-          exclusivamente en Hospital San Ángel Inn Chapultepec.
+          exclusivamente en Hospital San Ángel Inn Chapultepec.<br><br>
+          Aplican restricciones: No aplica con otras promociones, descuentos o paquetes. 
+          Beneficio válido únicamente al presentar la membresía digital vigente. 
+          Aplica exclusivamente para pacientes particulares.
         </div>
       </div>
     </div>
     <div class="footer">
-      <div class="footer-left">Av Chapultepec 489, Juárez,<br>Cuauhtémoc, CDMX<br>55 5241 1700</div>
-      <div class="footer-right"><img src="logodsai2.jpg" alt="Hospital San Ángel Inn"></div>
+      Av Chapultepec 489, Juárez,<br>
+      Cuauhtémoc, CDMX<br>
+      55 5241 1700
     </div>
   </div>
 
@@ -168,8 +175,9 @@
       </table>
     </div>
     <div class="footer">
-      <div class="footer-left">Av Chapultepec 489, Juárez,<br>Cuauhtémoc, CDMX<br>55 5241 1700</div>
-      <div class="footer-right"><img src="logodsai2.jpg" alt="Hospital San Ángel Inn"></div>
+      Av Chapultepec 489, Juárez,<br>
+      Cuauhtémoc, CDMX<br>
+      55 5241 1700
     </div>
   </div>
 
@@ -179,7 +187,6 @@
       const urlParams = new URLSearchParams(window.location.search);
       const nombre = urlParams.get('empleado') || 'Nombre del Empleado';
       const empresa = urlParams.get('empresa') || 'Nombre de la Empresa';
-
       document.getElementById('nombre-beneficiario').textContent = nombre;
       document.getElementById('empresa').textContent = empresa;
     }
@@ -190,7 +197,6 @@
       const front = document.getElementById('tarjetaFrontal');
       const back = document.getElementById('tarjetaReverso');
 
-      // Descargar Frente
       html2canvas(front, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
         const link = document.createElement('a');
         link.download = 'Membresia_Empresarial_Frente.png';
@@ -198,7 +204,6 @@
         link.click();
       });
 
-      // Descargar Reverso (con pequeño delay para evitar conflicto)
       setTimeout(() => {
         html2canvas(back, { scale: 2, useCORS: true, backgroundColor: '#ffffff' }).then(canvas => {
           const link = document.createElement('a');
@@ -209,8 +214,7 @@
       }, 300);
     }
 
-    // Exponer función para el modal
-    window.descargarComoJPG = descargarAmbosLados;   // Mantengo el nombre para compatibilidad
+    window.descargarComoJPG = descargarAmbosLados;
   </script>
 
 </body>
