@@ -24,6 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+    // ==================== SOLO NÚMEROS EN TELÉFONO ====================
+  const telefonoInput = document.getElementById("telefono");
+  if (telefonoInput) {
+    telefonoInput.addEventListener("input", (e) => {
+      e.target.value = e.target.value.replace(/[^0-9]/g, "");
+    });
+  }
+
   // ==================== CONTINUAR + ENVIAR A FASTAPI ====================
   btnContinuar.addEventListener("click", async (e) => {
     e.preventDefault();
