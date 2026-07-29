@@ -29,13 +29,19 @@
             <div class="form-section-card">
               <div class="field full">
                 <label>Nombre de la Empresa</label>
-                <input type="text" 
-                       class="input-glass" 
-                       id="empresa" 
-                       list="empresasList"
-                       placeholder="Escribe o selecciona la empresa" 
-                       autocomplete="on"
-                       required>
+                <select class="input-glass" id="empresa" required>
+                  <option value="" disabled selected>Selecciona una empresa</option>
+                  <option value="Seguros Monterrey / GMM">Seguros Monterrey / GMM</option>
+                  <option value="Universidad Londres">Universidad Londres</option>
+                  <option value="Alsea">Alsea</option>
+                  <option value="Health Conection / Mabe">Health Conection / Mabe</option>
+                  <option value="Health Conection / Garrido Licona y Asociados S. C.">Health Conection / Garrido Licona y Asociados S. C.</option>
+                  <option value="HSAI Chapultepec">HSAI Chapultepec</option>
+                  <option value="HSAI Individual">HSAI Individual</option>
+                  <option value="Health Conection / ZTE">Health Conection / ZTE</option>
+                  <option value="Health Conection / GMC">Health Conection / GMC</option>
+                  <option value="Health Conection / IPG Mediabrands">Health Conection / IPG Mediabrands</option>
+                </select>
               </div>
               
               <div class="fields-row">
@@ -45,7 +51,14 @@
                 </div>
                 <div class="field">
                   <label>Número de Teléfono</label>
-                  <input type="tel" class="input-glass" id="telefono" placeholder="5512345678" required>
+                  <input type="tel" 
+                         class="input-glass" 
+                         id="telefono" 
+                         placeholder="5512345678" 
+                         inputmode="numeric" 
+                         pattern="[0-9]*" 
+                         maxlength="10"
+                         required>
                 </div>
               </div>
               
@@ -126,20 +139,6 @@
     </div>
   </div>
 </div>
-
-<!-- DATALIST AUTOCOMPLETADO -->
-<datalist id="empresasList">
-  <option value="Seguros Monterrey / GMM"></option>
-  <option value="Universidad Londres"></option>
-  <option value="Alsea"></option>
-  <option value="Health Conection / Mabe"></option>
-  <option value="Health Conection / Garrido Licona y Asociados S. C."></option>
-  <option value="HSAI Chapultepec"></option>
-  <option value="HSAI Individual"></option>
-  <option value="Health Conection / ZTE"></option>
-  <option value="Health Conection / GMC"></option>
-  <option value="Health Conection / IPG Mediabrands"></option>
-</datalist>
 
 <script src="script.js"></script>
 </body>
